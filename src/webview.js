@@ -39,6 +39,31 @@ class AutoScaledCanvas {
     return this.element.toDataURL(...args);
   }
 
+  waitForFonts(fonts){
+      return new Promise(function (resolve, reject) {
+          setTimeout(resolve, 5000);
+          // let count = fonts.length;
+          // fonts.forEach(function (fontFace) {
+          //     const font = new window.FontFaceObserver(fontFace);
+          //     let char = null;
+          //
+          //     if (fontFace === "FontAwesome") {
+          //         char = "";
+          //     }
+          //
+          //     font.load(char).then(function () {
+          //         count--;
+          //
+          //         if (count < 1) {
+          //             resolve();
+          //         }
+          //     }).catch(function (e) {
+          //         return reject(e);
+          //     });
+          // });
+      });
+  }
+
   autoScale() {
     if (this.savedHeight !== undefined) {
       this.element.height = this.savedHeight;
