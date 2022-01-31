@@ -27,7 +27,7 @@ const stylesheet = StyleSheet.create({
 
 @webviewTarget('canvas')
 @webviewProperties({width: 300, height: 150})
-@webviewMethods(['toDataURL', 'waitForFonts'])
+@webviewMethods(['toDataURL'])
 export default class Canvas extends Component {
 
   state = {
@@ -133,9 +133,6 @@ export default class Canvas extends Component {
     const {width, height} = this;
     const {style, baseUrl = '', originWhitelist = ['*']} = this.props;
     const {isLoaded} = this.state;
-      let htmlContent = html;
-      const regex = new RegExp("<link rel=\"headLinks\" *>", 'g');
-      htmlContent = htmlContent.replace(regex, this.props.headLinks || "");
     if (Platform.OS === 'android') {
       const isAndroid9 = Platform.Version >= 28;
       return (
@@ -143,7 +140,7 @@ export default class Canvas extends Component {
           <WebView
             ref={this.handleRef}
             style={[isAndroid9 ? stylesheet.webviewAndroid9 : stylesheet.webview, {height, width}]}
-            source={{htmlContent, baseUrl}}
+            source={{html, baseUrl}}
             originWhitelist={originWhitelist}
             onMessage={this.handleMessage}
             onLoad={this.handleLoad}
@@ -162,7 +159,7 @@ export default class Canvas extends Component {
         <WebView
           ref={this.handleRef}
           style={[stylesheet.webview, {height, width}]}
-          source={{htmlContent, baseUrl}}
+          source={{html, baseUrl}}
           originWhitelist={originWhitelist}
           onMessage={this.handleMessage}
           onLoad={this.handleLoad}
