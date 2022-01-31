@@ -39,6 +39,12 @@ class AutoScaledCanvas {
     return this.element.toDataURL(...args);
   }
 
+  waitForFonts(fonts) {
+      return new Promise(resolve => {
+          setTimeout(resolve, 5000);
+      });
+  }
+
   autoScale() {
     if (this.savedHeight !== undefined) {
       this.element.height = this.savedHeight;
