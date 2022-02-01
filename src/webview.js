@@ -40,25 +40,32 @@ class AutoScaledCanvas {
   }
 
   waitForFonts(fonts) {
-      let count = fonts.length;
-      fonts.forEach(function (fontFace) {
-          const font = new window.FontFaceObserver(fontFace);
-          let char = null;
-          if(fontFace === "FontAwesome"){
-              char = "";
-          }
-          font.load(char).then(() => {
-              count--;
-              if(count < 1){
-                  // Fonts loaded --> Send Event
-                  window.ReactNativeWebView.postMessage(JSON.stringify({
-                      id: ID(), message: "fontsReady", type:"toRN"
-                  }));
-              }
-          }).catch(function (e) {
-              print(e);
-          });
-      });
+      // if(fonts && Array.isArray(fonts) && fonts.length > 0){
+      //     let count = fonts.length;
+      //     fonts.forEach(function (fontFace) {
+      //         const font = new window.FontFaceObserver(fontFace);
+      //         let char = null;
+      //         if(fontFace === "FontAwesome"){
+      //             char = "";
+      //         }
+      //         font.load(char).then(() => {
+      //             count--;
+      //             if(count < 1){
+      //                 // Fonts loaded --> Send Event
+      //                 window.ReactNativeWebView.postMessage(JSON.stringify({
+      //                     id: ID(), message: "fontsReady", type:"toRN"
+      //                 }));
+      //             }
+      //         }).catch(function (e) {
+      //             print(e);
+      //         });
+      //     });
+      // }else{
+          window.ReactNativeWebView.postMessage(JSON.stringify({
+              id: ID(), message: "fontsReady", type:"toRN"
+          }));
+      // }
+
   }
 
   autoScale() {

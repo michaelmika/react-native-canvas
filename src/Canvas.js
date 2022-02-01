@@ -99,6 +99,10 @@ export default class Canvas extends Component {
       case 'error': {
         throw new Error(data.payload.message);
       }
+        case 'toRN': {
+            this.props?.onMessage(data);
+            break;
+        }
       default: {
         if (data.payload) {
           const constructor = constructors[data.meta.constructor];
