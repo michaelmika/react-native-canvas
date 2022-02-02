@@ -61,10 +61,11 @@ class AutoScaledCanvas {
       //         });
       //     });
       // }else{
-          window.ReactNativeWebView.postMessage(JSON.stringify({
-              id: ID(), message: "fontsReady", type:"toRN"
-          }));
+      //     window.ReactNativeWebView.postMessage(JSON.stringify({
+      //         id: ID(), message: "fontsReady", type:"toRN"
+      //     }));
       // }
+      alert("TEST")
 
   }
 

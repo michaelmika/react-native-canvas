@@ -100,7 +100,9 @@ export default class Canvas extends Component {
         throw new Error(data.payload.message);
       }
         case 'toRN': {
-            this.props?.onMessage(data);
+            if(this.props && this.props.onMessage){
+                this.props.onMessage(data);
+            }
             break;
         }
       default: {
