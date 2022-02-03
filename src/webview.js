@@ -65,9 +65,16 @@ class AutoScaledCanvas {
       //         id: ID(), message: "fontsReady", type:"toRN"
       //     }));
       // }
-      setTimeout(() => {
+      const font = new window.FontFaceObserver("FontAwesome");
+      let char = "";
+      font.load(char).then(() => {
           window.ReactNativeWebView.postMessage(JSON.stringify({type: "toRN", payload: {message: "fontsReady"}}));
-      }, 3000);
+      }).catch(function (e) {
+          print(e);
+      });
+      // setTimeout(() => {
+      //     window.ReactNativeWebView.postMessage(JSON.stringify({type: "toRN", payload: {message: "fontsReady"}}));
+      // }, 3000);
   }
 
   autoScale() {
