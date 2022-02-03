@@ -65,9 +65,9 @@ class AutoScaledCanvas {
       //         id: ID(), message: "fontsReady", type:"toRN"
       //     }));
       // }
-      return new Promise((resolve, reject) => {
-          setTimeout(resolve, 3000);
-      });
+      setTimeout(() => {
+          window.ReactNativeWebView.postMessage(JSON.stringify({type: "toRN", payload: {message: "fontsReady"}}));
+      }, 3000);
   }
 
   autoScale() {
