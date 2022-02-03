@@ -65,8 +65,9 @@ class AutoScaledCanvas {
       //         id: ID(), message: "fontsReady", type:"toRN"
       //     }));
       // }
-      alert("TEST");
-
+      return new Promise((resolve, reject) => {
+          setTimeout(resolve, 3000);
+      });
   }
 
   autoScale() {
