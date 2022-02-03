@@ -65,7 +65,7 @@ class AutoScaledCanvas {
       //         id: ID(), message: "fontsReady", type:"toRN"
       //     }));
       // }
-      alert("TEST")
+      alert("TEST");
 
   }
 
