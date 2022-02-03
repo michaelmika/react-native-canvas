@@ -141,9 +141,9 @@ export default class Canvas extends Component {
     const {isLoaded} = this.state;
 
       // Replace fonts
-      let htmlContent = html;
-      const regex = new RegExp("<link rel=\"headLinks\" *>", 'g');
-      htmlContent = htmlContent.replace(regex, this.props.headLinks || "");
+      // let htmlContent = html;
+      // const regex = new RegExp("<link rel=\"headLinks\" *>", 'g');
+      // htmlContent = htmlContent.replace(regex, this.props.headLinks || "");
 
     if (Platform.OS === 'android') {
       const isAndroid9 = Platform.Version >= 28;
@@ -152,7 +152,7 @@ export default class Canvas extends Component {
           <WebView
             ref={this.handleRef}
             style={[isAndroid9 ? stylesheet.webviewAndroid9 : stylesheet.webview, {height, width}]}
-            source={{htmlContent, baseUrl}}
+            source={{html, baseUrl}}
             originWhitelist={originWhitelist}
             onMessage={this.handleMessage}
             onLoad={this.handleLoad}
@@ -171,7 +171,7 @@ export default class Canvas extends Component {
         <WebView
           ref={this.handleRef}
           style={[stylesheet.webview, {height, width}]}
-          source={{htmlContent, baseUrl}}
+          source={{html, baseUrl}}
           originWhitelist={originWhitelist}
           onMessage={this.handleMessage}
           onLoad={this.handleLoad}
