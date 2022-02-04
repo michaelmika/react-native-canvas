@@ -25,7 +25,7 @@ const newContent = flow([
   Node.map(node => {
     if (node.nodeName === 'script') {
       const src = node.attrs.find(attr => attr.name === 'src');
-      if (src.value && src.trim().indexOf("http") !== 0) {
+      if (src.value && src.value.trim().indexOf("http") !== 0) {
         const scriptPath = path.resolve(path.dirname(entryPath), src.value);
         const scriptContent = babel.transform(fs.readFileSync(scriptPath, 'utf-8'), {
           comments: false,
