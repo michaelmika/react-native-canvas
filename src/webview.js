@@ -40,41 +40,43 @@ class AutoScaledCanvas {
   }
 
   waitForFonts(fonts) {
-      // if(fonts && Array.isArray(fonts) && fonts.length > 0){
-      //     let count = fonts.length;
-      //     fonts.forEach(function (fontFace) {
-      //         const font = new window.FontFaceObserver(fontFace);
-      //         let char = null;
-      //         if(fontFace === "FontAwesome"){
-      //             char = "";
-      //         }
-      //         font.load(char).then(() => {
-      //             count--;
-      //             if(count < 1){
-      //                 // Fonts loaded --> Send Event
-      //                 window.ReactNativeWebView.postMessage(JSON.stringify({
-      //                     id: ID(), message: "fontsReady", type:"toRN"
-      //                 }));
-      //             }
-      //         }).catch(function (e) {
-      //             print(e);
-      //         });
-      //     });
-      // }else{
-      //     window.ReactNativeWebView.postMessage(JSON.stringify({
-      //         id: ID(), message: "fontsReady", type:"toRN"
-      //     }));
-      // }
-      const font = new window.FontFaceObserver("FontAwesome");
-      let char = "";
-      font.load(char).then(() => {
-          window.ReactNativeWebView.postMessage(JSON.stringify({type: "toRN", payload: {message: "fontsReady"}}));
-      }).catch(function (e) {
-          print(e);
+      let addFonts = {};
+      if(fonts && Array.isArray(fonts) && fonts.length > 0){
+          print("Google Fonts", fonts);
+          addFonts.google = {
+              families: fonts.map(item => item + ":100,200,300,400,500,600,700,800,900")
+          };
+      }
+      WebFont.load({
+          ...addFonts,
+          custom: {
+              families: [ "FontAwesome" ]
+          },
+          active: function() {
+              //Render your page
+              window.ReactNativeWebView.postMessage(JSON.stringify({
+                  type: "toRN",
+                  payload: {
+                      message: "fontsReady"
+                  }
+              }));
+          },
+          fontinactive: function(familyName, fvd) {
+              //Render your page
+              window.ReactNativeWebView.postMessage(JSON.stringify({
+                  type: "toRN",
+                  payload: {
+                      message: "failedLoadingFont",
+                      fontFamily: familyName,
+                      fvd
+                  }
+              }));
+          },
+          fontactive: function(familyName, fvd) {
+              print("Font Loaded", familyName, fvd);
+          },
+          timeout: 20000
       });
-      // setTimeout(() => {
-      //     window.ReactNativeWebView.postMessage(JSON.stringify({type: "toRN", payload: {message: "fontsReady"}}));
-      // }, 3000);
   }
 
   autoScale() {
