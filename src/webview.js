@@ -42,7 +42,6 @@ class AutoScaledCanvas {
   waitForFonts(fonts) {
       let addFonts = {};
       if(fonts && Array.isArray(fonts) && fonts.length > 0){
-          print("Google Fonts", fonts);
           addFonts.google = {
               families: fonts.map(item => item + ":100,200,300,400,500,600,700,800,900")
           };
@@ -73,7 +72,7 @@ class AutoScaledCanvas {
               }));
           },
           fontactive: function(familyName, fvd) {
-              print("Font Loaded", familyName, fvd);
+              // print("Font Loaded", familyName, fvd);
           },
           timeout: 20000
       });
