@@ -186,8 +186,12 @@ export default class Canvas extends Component {
           javaScriptEnabled
           domStorageEnabled
           thirdPartyCookiesEnabled
+          sharedCookiesEnabled
           allowUniversalAccessFromFileURLs
+          allowFileAccessFromFileURLs
+          allowingReadAccessToURL
           useWebKit
+          cacheEnabled={false}
           onError={syntheticEvent => {
               const { nativeEvent } = syntheticEvent;
               console.warn('WebView error: ', nativeEvent);
