@@ -176,6 +176,12 @@ export default class Canvas extends Component {
           onMessage={this.handleMessage}
           onLoad={this.handleLoad}
           scrollEnabled={false}
+          mixedContentMode="always"
+          scalesPageToFit={false}
+          javaScriptEnabled
+          domStorageEnabled
+          thirdPartyCookiesEnabled
+          allowUniversalAccessFromFileURLs
         />
       </View>
     );
