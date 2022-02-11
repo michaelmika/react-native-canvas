@@ -43,7 +43,7 @@ class AutoScaledCanvas {
       let addFonts = {};
       if(fonts && Array.isArray(fonts) && fonts.length > 0){
           addFonts.google = {
-              families: fonts
+              families: fonts.map(font => `${font}:100,200,300,400,500,600,700,800,900`)
           };
       }
       WebFont.load({
