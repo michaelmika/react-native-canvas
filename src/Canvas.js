@@ -162,7 +162,7 @@ export default class Canvas extends Component {
             domStorageEnabled
             thirdPartyCookiesEnabled
             allowUniversalAccessFromFileURLs
-            // useWebKit
+            useWebKit
             onError={syntheticEvent => {
                 const { nativeEvent } = syntheticEvent;
                 console.warn('WebView error: ', nativeEvent);
@@ -184,14 +184,14 @@ export default class Canvas extends Component {
           // mixedContentMode="always"
           // scalesPageToFit={false}
           javaScriptEnabled
-          // domStorageEnabled
-          // thirdPartyCookiesEnabled
-          // sharedCookiesEnabled
-          // allowUniversalAccessFromFileURLs
-          // allowFileAccessFromFileURLs
-          // allowingReadAccessToURL
-          // useWebKit
-          // cacheEnabled={false}
+          domStorageEnabled
+          thirdPartyCookiesEnabled
+          sharedCookiesEnabled
+          allowUniversalAccessFromFileURLs
+          allowFileAccessFromFileURLs
+          allowingReadAccessToURL
+          useWebKit
+          cacheEnabled={false}
           onError={syntheticEvent => {
               const { nativeEvent } = syntheticEvent;
               console.warn('WebView error: ', nativeEvent);
