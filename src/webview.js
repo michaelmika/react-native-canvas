@@ -73,6 +73,14 @@ class AutoScaledCanvas {
           },
           fontactive: function(familyName, fvd) {
               // print("Font Loaded", familyName, fvd);
+              window.ReactNativeWebView.postMessage(JSON.stringify({
+                  type: "toRN",
+                  payload: {
+                      message: "fontLoaded",
+                      fontFamily: familyName,
+                      fvd
+                  }
+              }));
           },
           timeout: 20000
       });

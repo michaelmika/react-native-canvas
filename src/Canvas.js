@@ -190,7 +190,6 @@ export default class Canvas extends Component {
           sharedCookiesEnabled
           allowUniversalAccessFromFileURLs
           allowFileAccessFromFileURLs
-          allowingReadAccessToURL
           useWebKit
           cacheEnabled={false}
           onError={syntheticEvent => {
